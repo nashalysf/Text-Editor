@@ -1,16 +1,20 @@
 {
   "name": "client",
+  "version": "1.0.0",
+  "description": "",
+  "private": "true",
   "scripts": {
     "dev": "webpack-dev-server",
-    "build": "webpack --mode production",
+    "build": "webpack --mode development",
     "start": "webpack --watch"
   },
-  "author": "2U",
+  "author": "",
   "license": "UNLICENSED",
   "devDependencies": {
-    "@babel/core": "^7.15.0",
+    "@babel/cli": "^7.19.3",
+    "@babel/core": "^7.19.6",
     "@babel/plugin-transform-runtime": "^7.15.0",
-    "@babel/preset-env": "^7.15.0",
+    "@babel/preset-env": "^7.19.4",
     "@babel/runtime": "^7.15.3",
     "babel-loader": "^8.2.2",
     "css-loader": "^6.2.0",

@@ -1,7 +1,13 @@
 import { Workbox } from 'workbox-window';
 import Editor from './editor';
-import './database';
+
+
+import Logo from '../images/logo.png';
 import '../css/style.css';
+
+window.addEventListener('load', function(){
+  document.getElementById('logo').src = Logo;
+});
 
 const main = document.querySelector('#main');
 main.innerHTML = '';
@@ -23,10 +29,11 @@ if (typeof editor === 'undefined') {
   loadSpinner();
 }
 
+
 // Check if service workers are supported
 if ('serviceWorker' in navigator) {
   // register workbox service worker
-  const workboxSW = new Workbox('/src-sw.js');
+  const workboxSW = new Workbox('./service-worker.js');
   workboxSW.register();
 } else {
   console.error('Service workers are not supported in this browser.');

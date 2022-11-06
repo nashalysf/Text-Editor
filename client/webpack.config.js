@@ -14,14 +14,41 @@ module.exports = () => {
       install: './src/js/install.js'
     },
     output: {
-      filename: 'bundle.js',
+    
       path: path.resolve(__dirname, 'dist'),
     },
     plugins: [
+      new InjectManifest({
+        swSrc: './src-sw.js',
+        swDest: 'service-worker.js',
+      }),
       new HtmlWebpackPlugin({
         template: './index.html',
-        title: 'Contact-Cards',
-      })
+        title: 'Text-Editor',
+      }),
+      new WebpackPwaManifest({
+        name: 'Text Edit Application',
+        short_name: 'Text-Editor',
+        description: 'Write code on the go!',
+        background_color: '#7eb4e2',
+        theme_color: '#7eb4e2',
+        start_url: './',
+        publicPath: './',
+        fingerprints: false,
+        icons: [
+          {
+            src: path.resolve('src/images/logo.png'),
+            sizes: [96, 128, 192, 256, 384, 512],
+            destination: path.join('assets', 'icons'),
+          },
+          {
+            src: path.resolve('src/images/logo.png'),
+            size: '1024x1024',
+            destination: path.join('assets', 'icons'),
+            purpose: 'maskable'
+          }
+        ],
+      }),
     ],
 
     module: {
